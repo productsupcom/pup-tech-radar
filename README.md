@@ -1,9 +1,11 @@
 # Motivation
 
-At [Yoyo Wallet](https://www.yoyowallet.com/), we maintain a [public Tech
-Radar](http://yoyowallet.github.io/tech-radar/) to help our engineering teams
+At [Productsup](https://www.productsup.io/), we maintain a [public Tech
+Radar](http://prodcutsup.github.io/tech-radar/) to help our engineering teams
 align on technology choices. Is is based on the [pioneering work
 by ThoughtWorks](https://www.thoughtworks.com/radar).
+
+This version is a modified version from [Yoyo Wallet](https://github.com/yoyowallet/tech-radar).
 
 This repository contains the code to generate the visualization:
 [`radar.js`](/docs/radar.js) (based on [d3.js v4](https://d3js.org)), and
@@ -16,7 +18,7 @@ Feel free to use and adapt it for your own purposes.
 
 ```html
 <script src="https://d3js.org/d3.v4.min.js"></script>
-<script src="http://yoyowallet.github.io/tech-radar/release/radar-0.5.js"></script>
+<script src="http://productsupcom.github.io/tech-radar/release/radar-0.5.js"></script>
 ```
 
 2. insert an empty `svg` tag:

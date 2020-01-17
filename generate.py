@@ -5,9 +5,9 @@ import re
 
 import requests
 
-ENTRIES_CSV = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ6mTxZKu1-45eMd7tdWuxoiH_c0ImtXO0rvjJNqkgvoe7CJ1kDArbVtKYNC1U4s2UnZTjmTzr2FRA1/pub?gid=0&single=true&output=csv'
-RINGS_CSV = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ6mTxZKu1-45eMd7tdWuxoiH_c0ImtXO0rvjJNqkgvoe7CJ1kDArbVtKYNC1U4s2UnZTjmTzr2FRA1/pub?gid=1055220400&single=true&output=csv'
-QUADRANTS_CSV = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQ6mTxZKu1-45eMd7tdWuxoiH_c0ImtXO0rvjJNqkgvoe7CJ1kDArbVtKYNC1U4s2UnZTjmTzr2FRA1/pub?gid=1460082809&single=true&output=csv'
+ENTRIES_CSV = 'https://docs.google.com/spreadsheets/u/1/d/119Q4yqwCNO8bS4RSBevRarwJM2SsAv0QEqs4sSWJlC0/export?format=csv&id=119Q4yqwCNO8bS4RSBevRarwJM2SsAv0QEqs4sSWJlC0&gid=0'
+RINGS_CSV = 'https://docs.google.com/spreadsheets/u/1/d/1JKkdaeGJPrLhgtZ2jAPBjS8cpaJGL6PgK0SU28fgIJw/export?format=csv&id=1JKkdaeGJPrLhgtZ2jAPBjS8cpaJGL6PgK0SU28fgIJw&gid=0'
+QUADRANTS_CSV = 'https://docs.google.com/spreadsheets/u/1/d/1YDRKVUGHRVREZ1gGUwRGffb7sQpVV3ztR4KTRSqwHds/export?format=csv&id=1YDRKVUGHRVREZ1gGUwRGffb7sQpVV3ztR4KTRSqwHds&gid=0'
 
 TARGET_HTML = 'docs/index.html'
 MARKER_START = '/* RADAR START */'
@@ -53,7 +53,7 @@ def main():
             'grid': "#bbb",
             'inactive': "#ddd"
         },
-        'title': "Yoyo Wallet Tech Radar — 2019.02",
+        'title': "Productsup Tech Radar — 2020.01",
         'print_layout': True,
         'quadrants': quadrants,
         'rings': rings,

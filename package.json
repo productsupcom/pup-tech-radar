@@ -1,9 +1,9 @@
 {
-  "name": "yoyowallet-tech-radar",
-  "version": "2019.2.0",
+  "name": "pup-tech-radar",
+  "version": "2020.01",
   "description": "Visualizing our technology choices",
-  "homepage": "https://github.com/yoyowallet/tech-radar#readme",
-  "repository": "https://github.com/yoyowallet/tech-radar.git",
+  "homepage": "https://github.com/productsupcom/tech-radar#readme",
+  "repository": "https://github.com/productsupcom/tech-radar.git",
   "license": "MIT",
   "directories": {
     "doc": "docs"
