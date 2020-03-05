@@ -256,7 +256,7 @@ function radar_visualization(config) {
   }
 
   function legend_transform(quadrant, ring, index=null) {
-    var dx = ring < 2 ? 0 : 120;
+    var dx = ring < 2 ? 0 : 150;  // width of the legend if you have longer texts
     var dy = (index == null ? -16 : index * 12);
     if (ring % 2 === 1) {
       dy = dy + 36 + segmented[quadrant][ring-1].length * 12;
@@ -301,7 +301,7 @@ function radar_visualization(config) {
           .attr("transform", legend_transform(quadrant, ring))
           .text(config.rings[ring].name)
           .style("font-family", "Arial, Helvetica")
-          .style("font-size", "12")
+          .style("font-size", "10")
           .style("font-weight", "bold");
         legend.selectAll(".legend" + quadrant + ring)
           .data(segmented[quadrant][ring])
@@ -314,7 +314,12 @@ function radar_visualization(config) {
               .style("font-family", "Arial, Helvetica")
               .style("font-size", "11")
               .on("mouseover", function(d) { showBubble(d); highlightLegendItem(d); })
-              .on("mouseout", function(d) { hideBubble(d); unhighlightLegendItem(d); });
+              .on("mouseout", function(d) { hideBubble(d); unhighlightLegendItem(d); })
+              .on("click", function(d) {
+                document.getElementById("tech-name").innerHTML = d.label;
+                document.getElementById("explanation").innerHTML = d.explanation;
+                openNav();
+              });
       }
     }
   }
@@ -387,7 +392,13 @@ function radar_visualization(config) {
         .attr("class", "blip")
         .attr("transform", function(d, i) { return legend_transform(d.quadrant, d.ring, i); })
         .on("mouseover", function(d) { showBubble(d); highlightLegendItem(d); })
-        .on("mouseout", function(d) { hideBubble(d); unhighlightLegendItem(d); });
+        .on("mouseout", function(d) { hideBubble(d); unhighlightLegendItem(d); })
+        //.on("click", function(d) { alert(d.explanation); });
+        .on("click", function(d) {
+          document.getElementById("tech-name").innerHTML = d.label;
+          document.getElementById("explanation").innerHTML = d.explanation;
+          openNav();
+        });
 
   // configure each blip
   blips.each(function(d) {

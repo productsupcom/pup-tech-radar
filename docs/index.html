@@ -1,22 +1,40 @@
 <html>
 
 <head>
-<meta http-equiv="Content-type" content="text/html; charset=utf-8">
-<title>Productsup Tech Radar</title>
-<link rel="shortcut icon" href="https://productsup.io/wp-content/themes/productsup/favicon.ico">
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>Productsup Tech Radar</title>
+    <link rel="shortcut icon" href="https://productsup.io/wp-content/themes/productsup/favicon.ico">
 
-<script src="https://d3js.org/d3.v5.min.js" integrity="sha384-gWG9VgK097eQTR3sCV4vOFl+vCZUZpKoV6cidldSSoI/ThCG5Yvl0EBknaGZsd5L" crossorigin="anonymous"></script>
-<script src="radar.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Sans:400,700|Droid+Serif' rel='stylesheet' type='text/css'>
 
-<link rel="stylesheet" href="radar.css">
+    <link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
+
+    <script src="https://d3js.org/d3.v5.min.js" integrity="sha384-gWG9VgK097eQTR3sCV4vOFl+vCZUZpKoV6cidldSSoI/ThCG5Yvl0EBknaGZsd5L" crossorigin="anonymous"></script>
+    <script src="radar.js"></script>
+    <script src="main.js"></script>
+
+    <link rel="stylesheet" href="radar.css">
 </head>
 
 <body>
 
-<svg id="radar"></svg>
+<div id="mySidenav" class="sidenav">
+    <div class="explanation-container">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <h2 class="explanation" id="tech-name"></h2>
+        <h4 class="explanation">Explanation</h4>
+        <div class="explanation" id="explanation"></div>
+        <h4 class="explanation">Skilled Collegues</h4>
+        <div class="explanation">...</div>
+    </div>
+</div>
+
+<div id="main">
+    <svg id="radar"></svg>
+</div>
 
 <script>
-radar_visualization(/* RADAR START */{"svg_id": "radar", "width": 1450, "height": 1000, "colors": {"background": "#fff", "grid": "#bbb", "inactive": "#ddd"}, "title": "Productsup Tech Radar \u2014 2020.01", "print_layout": true, "quadrants": [{"name": "Languages"}, {"name": "Infrastructure"}, {"name": "Frameworks"}, {"name": "Data Management"}], "rings": [{"name": "USE", "color": "#93c47d"}, {"name": "TRIAL", "color": "#93d2c2"}, {"name": "STRATEGIC", "color": "#fbdb84"}, {"name": "HOLD", "color": "#efafa9"}], "entries": [{"quadrant": 2, "ring": 0, "label": "Symfony 4.4"}, {"quadrant": 2, "ring": 2, "label": "Symfony 5"}, {"quadrant": 2, "ring": 3, "label": "Zend Framework"}, {"quadrant": 2, "ring": 1, "label": "Angular 8"}, {"quadrant": 2, "ring": 0, "label": "Angular 7"}, {"quadrant": 2, "ring": 3, "label": "AngularJS"}, {"quadrant": 2, "ring": 0, "label": "React"}, {"quadrant": 2, "ring": 3, "label": "Slim"}, {"quadrant": 2, "ring": 0, "label": "Node.js"}, {"quadrant": 2, "ring": 3, "label": "jQuery"}, {"quadrant": 2, "ring": 0, "label": "phpunit"}, {"quadrant": 2, "ring": 0, "label": "phpstan"}, {"quadrant": 0, "ring": 3, "label": "PHP 5.6"}, {"quadrant": 0, "ring": 0, "label": "PHP 7.4"}, {"quadrant": 0, "ring": 2, "label": "PHP 8"}, {"quadrant": 1, "ring": 1, "label": "Docker"}, {"quadrant": 1, "ring": 0, "label": "Nginx"}, {"quadrant": 1, "ring": 0, "label": "Jenkins"}, {"quadrant": 1, "ring": 0, "label": "Rundeck"}, {"quadrant": 1, "ring": 0, "label": "Grafana"}, {"quadrant": 1, "ring": 0, "label": "Linux"}, {"quadrant": 3, "ring": 1, "label": "InfluxDB"}, {"quadrant": 0, "ring": 0, "label": "Typescript"}, {"quadrant": 0, "ring": 0, "label": "Javascript"}, {"quadrant": 0, "ring": 1, "label": "Go"}, {"quadrant": 0, "ring": 0, "label": "Python"}, {"quadrant": 0, "ring": 1, "label": "Erlang"}, {"quadrant": 0, "ring": 1, "label": "Haskell"}, {"quadrant": 3, "ring": 0, "label": "MySQL"}, {"quadrant": 3, "ring": 0, "label": "SQLite"}, {"quadrant": 3, "ring": 0, "label": "Redis"}, {"quadrant": 3, "ring": 3, "label": "BigQuery"}, {"quadrant": 3, "ring": 3, "label": "AWS S3"}, {"quadrant": 3, "ring": 1, "label": "CouchDB"}, {"quadrant": 3, "ring": 0, "label": "Elastic Search"}]}/* RADAR END */);
+radar_visualization(/* RADAR START */{"svg_id": "radar", "width": 1450, "height": 1000, "colors": {"background": "#fff", "grid": "#bbb", "inactive": "#ddd"}, "title": "Productsup Tech Radar \u2014 as of 2020.03", "print_layout": true, "quadrants": [{"name": "Languages"}, {"name": "Infrastructure"}, {"name": "Frameworks"}, {"name": "Data Management"}], "rings": [{"name": "USE", "color": "#93c47d"}, {"name": "TRIAL", "color": "#93d2c2"}, {"name": "STRATEGIC", "color": "#fbdb84"}, {"name": "HOLD", "color": "#efafa9"}], "entries": [{"quadrant": 2, "ring": 0, "label": "Symfony 4.4 LTS", "explanation": "No explanation provided so far.", "moved": "0"}, {"quadrant": 2, "ring": 0, "label": "Symfony 5", "explanation": "No explanation provided so far.", "moved": "0"}, {"quadrant": 2, "ring": 3, "label": "Zend Framework", "explanation": "We decided to not continue using Zend anymore as the community support is getting less and also the functionality of the framework does not fit our needs anymore", "moved": "-1"}, {"quadrant": 2, "ring": 1, "label": "Angular 8", "explanation": "No explanation provided so far.", "moved": "0"}, {"quadrant": 2, "ring": 0, "label": "Angular 7", "explanation": "No explanation provided so far.", "moved": "0"}, {"quadrant": 2, "ring": 3, "label": "AngularJS", "explanation": "No explanation provided so far.", "moved": "0"}, {"quadrant": 2, "ring": 3, "label": "React", "explanation": "No explanation provided so far.", "moved": "0"}, {"quadrant": 2, "ring": 0, "label": "Slim 4", "explanation": "No explanation provided so far.", "moved": "0"}, {"quadrant": 2, "ring": 1, "label": "Node.js", "explanation": "We use it in lockets repo for the websockets communication in the platform", "moved": "0"}, {"quadrant": 2, "ring": 3, "label": "jQuery", "explanation": "No explanation provided so far.", "moved": "0"}, {"quadrant": 2, "ring": 0, "label": "phpunit", "explanation": "No explanation provided so far.", "moved": "0"}, {"quadrant": 2, "ring": 0, "label": "phpstan", "explanation": "No explanation provided so far.", "moved": "0"}, {"quadrant": 0, "ring": 3, "label": "PHP <= 7.2", "explanation": "No explanation provided so far.", "moved": "-1"}, {"quadrant": 0, "ring": 0, "label": "PHP 7.4", "explanation": "No explanation provided so far.", "moved": "0"}, {"quadrant": 1, "ring": 0, "label": "Docker", "explanation": "No explanation provided so far.", "moved": "0"}, {"quadrant": 1, "ring": 0, "label": "Nginx", "explanation": "No explanation provided so far.", "moved": "0"}, {"quadrant": 1, "ring": 0, "label": "Jenkins", "explanation": "No explanation provided so far.", "moved": "0"}, {"quadrant": 1, "ring": 0, "label": "Rundeck", "explanation": "No explanation provided so far.", "moved": "0"}, {"quadrant": 1, "ring": 0, "label": "Grafana", "explanation": "No explanation provided so far.", "moved": "0"}, {"quadrant": 1, "ring": 0, "label": "Linux", "explanation": "No explanation provided so far.", "moved": "0"}, {"quadrant": 3, "ring": 0, "label": "InfluxDB", "explanation": "No explanation provided so far.", "moved": "1"}, {"quadrant": 0, "ring": 0, "label": "Typescript", "explanation": "No explanation provided so far.", "moved": "0"}, {"quadrant": 0, "ring": 0, "label": "Javascript", "explanation": "No explanation provided so far.", "moved": "0"}, {"quadrant": 0, "ring": 0, "label": "Go", "explanation": "No explanation provided so far.", "moved": "1"}, {"quadrant": 0, "ring": 0, "label": "Python", "explanation": "No explanation provided so far.", "moved": "0"}, {"quadrant": 3, "ring": 0, "label": "MySQL", "explanation": "No explanation provided so far.", "moved": "0"}, {"quadrant": 3, "ring": 0, "label": "SQLite", "explanation": "No explanation provided so far.", "moved": "0"}, {"quadrant": 3, "ring": 0, "label": "Redis", "explanation": "No explanation provided so far.", "moved": "0"}, {"quadrant": 3, "ring": 0, "label": "BigQuery", "explanation": "No explanation provided so far.", "moved": "0"}, {"quadrant": 3, "ring": 0, "label": "AWS S3", "explanation": "No explanation provided so far.", "moved": "0"}, {"quadrant": 3, "ring": 0, "label": "Elastic Search", "explanation": "No explanation provided so far.", "moved": "0"}, {"quadrant": 2, "ring": 1, "label": "scikit-learn", "explanation": "No explanation provided so far.", "moved": "0"}, {"quadrant": 2, "ring": 1, "label": "opencv", "explanation": "No explanation provided so far.", "moved": "0"}, {"quadrant": 2, "ring": 2, "label": "NLTK", "explanation": "No explanation provided so far.", "moved": "0"}, {"quadrant": 1, "ring": 2, "label": "Kubernetes", "explanation": "No explanation provided so far.", "moved": "0"}, {"quadrant": 1, "ring": 1, "label": "Docker Swarm", "explanation": "Using it for jenkins4 and our xlsx api for the Content Portal", "moved": "0"}, {"quadrant": 1, "ring": 3, "label": "AWS EC2", "explanation": "No explanation provided so far.", "moved": "0"}, {"quadrant": 1, "ring": 3, "label": "Gearman", "explanation": "No explanation provided so far.", "moved": "0"}, {"quadrant": 2, "ring": 0, "label": "Doctrine", "explanation": "No explanation provided so far.", "moved": "0"}, {"quadrant": 1, "ring": 3, "label": "AWS EFS", "explanation": "No explanation provided so far.", "moved": "-1"}, {"quadrant": 1, "ring": 0, "label": "AWS ELB", "explanation": "No explanation provided so far.", "moved": "0"}, {"quadrant": 2, "ring": 0, "label": "PHP Code Sniffer", "explanation": "No explanation provided so far.", "moved": "0"}, {"quadrant": 2, "ring": 0, "label": "Open API Standard 3", "explanation": "No explanation provided so far.", "moved": "0"}, {"quadrant": 2, "ring": 3, "label": "Open API Standard 2 (Swagger)", "explanation": "No explanation provided so far.", "moved": "0"}, {"quadrant": 2, "ring": 0, "label": "Laravel components", "explanation": "No explanation provided so far.", "moved": "0"}, {"quadrant": 2, "ring": 3, "label": "Slim 2", "explanation": "No explanation provided so far.", "moved": "0"}, {"quadrant": 2, "ring": 3, "label": "Slim 3", "explanation": "No explanation provided so far.", "moved": "0"}, {"quadrant": 2, "ring": 0, "label": "Symfony Components", "explanation": "No explanation provided so far.", "moved": "0"}]}/* RADAR END */);
 </script>
 
 <table>
@@ -30,9 +48,9 @@ The Productsup Tech Radar is a list of technologies, complemented by an assessme
 </p>
 
 <ul>
-<li><strong>ADOPT</strong> &mdash; Technologies we have high confidence in to serve our purpose, also in large scale. Technologies with a usage culture in our Productsup production environment, low risk and recommended to be widely used.</li>
+<li><strong>USE</strong> &mdash; Technologies we have high confidence in to serve our purpose, also in large scale. Technologies with a usage culture in our Productsup production environment, low risk and recommended to be widely used.</li>
 <li><strong>TRIAL</strong> &mdash; Technologies that we have seen work with success in project work to solve a real problem; first serious usage experience that confirm benefits and can uncover limitations. TRIAL technologies are slightly more risky; some engineers in our organization walked this path and will share knowledge and experiences.</li>
-<li><strong>ASSESS</strong> &mdash; Technologies that are promising and have clear potential value-add for us; technologies worth to invest some research and prototyping efforts in to see if it has impact. ASSESS technologies have higher risks; they are often brand new and highly unproven in our organisation. You will find some engineers that have knowledge in the technology and promote it, you may even find teams that have started a prototyping effort.</li>
+<li><strong>STRATEGIC</strong> &mdash; Technologies that are promising and have clear potential value-add for us; technologies worth to invest some research and prototyping efforts in to see if it has impact. STRATEGIC technologies have higher risks; they are often brand new and highly unproven in our organisation. You will find some engineers that have knowledge in the technology and promote it, you may even find teams that have started a prototyping effort.</li>
 <li><strong>HOLD</strong> &mdash; Technologies not recommended to be used for new projects. Technologies that we think are not (yet) worth to (further) invest in. HOLD technologies should not be used for new projects, but usually can be continued for existing projects.</li>
 </ul>
 
@@ -47,11 +65,11 @@ The Tech Radar is a tool to inspire and support engineering teams at Productsup 
 <h3>How do we maintain it?</h3>
 
 <p>
-The Tech Radar is maintained by the <em>Productsup Engineering team</em>. The team self-organises to maintain the Tech Radar documents, including this public version. Assignment of technologies to rings is the outcome of ring change proposals, which are discussed and voted on in meetings. The Tech Radar depends on active participation and input from all engineering teams at Yoyo Wallet.
+The Tech Radar is maintained by the <em>Productsup Engineering team</em>. The team self-organises to maintain the Tech Radar documents, including this public version. Assignment of technologies to rings is the outcome of ring change proposals, which are discussed and voted on in meetings. The Tech Radar depends on active participation and input from all engineering teams at Productsup.
 </p>
 
 <p>
-<em>BTW, if you would like to create your own Tech Radar &mdash; we have <a href="https://github.com/productsupcom/tech-radar">open sourced the code</a> to generate this visualization.</em>
+<em>Code is open sourced and can be found here: <a href="https://github.com/productsupcom/tech-radar">Tech Radar</a></em>
 </p>
 
 </td></tr>
