@@ -2,6 +2,7 @@
 
 // Original work Copyright (c) 2017 Zalando SE
 // Modified work Copyright (c) 2019 Yoyo Wallet Limited
+// Modified work Copyright (c) 2020 Products Up GmbH
 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -296,17 +297,20 @@ function radar_visualization(config) {
         .text(config.quadrants[quadrant].name)
         .style("font-family", "Arial, Helvetica")
         .style("font-size", "18");
+
       for (var ring = 0; ring < 4; ring++) {
-        legend.append("text")
-          .attr("transform", legend_transform(quadrant, ring))
-          .text(config.rings[ring].name)
-          .style("font-family", "Arial, Helvetica")
-          .style("font-size", "10")
-          .style("font-weight", "bold");
-        legend.selectAll(".legend" + quadrant + ring)
-          .data(segmented[quadrant][ring])
-          .enter()
-            .append("text")
+        if (segmented[quadrant][ring].length > 0)
+        {
+          legend.append("text")
+              .attr("transform", legend_transform(quadrant, ring))
+              .text(config.rings[ring].name)
+              .style("font-family", "Arial, Helvetica")
+              .style("font-size", "10")
+              .style("font-weight", "bold");
+          legend.selectAll(".legend" + quadrant + ring)
+              .data(segmented[quadrant][ring])
+              .enter()
+              .append("text")
               .attr("transform", function(d, i) { return legend_transform(quadrant, ring, i); })
               .attr("class", "legend" + quadrant + ring)
               .attr("id", function(d, i) { return "legendItem" + d.id; })
@@ -320,6 +324,7 @@ function radar_visualization(config) {
                 document.getElementById("explanation").innerHTML = d.explanation;
                 openNav();
               });
+        }
       }
     }
   }
