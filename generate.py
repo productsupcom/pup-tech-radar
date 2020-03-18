@@ -11,6 +11,7 @@ import requests
 
 ENTRIES_CSV = 'https://docs.google.com/spreadsheets/u/1/d/119Q4yqwCNO8bS4RSBevRarwJM2SsAv0QEqs4sSWJlC0/export?format=csv&id=119Q4yqwCNO8bS4RSBevRarwJM2SsAv0QEqs4sSWJlC0&gid=0'
 EXPLANATIONS_CSV = 'https://docs.google.com/spreadsheets/u/1/d/119Q4yqwCNO8bS4RSBevRarwJM2SsAv0QEqs4sSWJlC0/export?format=csv&id=119Q4yqwCNO8bS4RSBevRarwJM2SsAv0QEqs4sSWJlC0&gid=479470419'
+SKILLS_CSV = 'https://docs.google.com/spreadsheets/u/1/d/119Q4yqwCNO8bS4RSBevRarwJM2SsAv0QEqs4sSWJlC0/export?format=csv&id=119Q4yqwCNO8bS4RSBevRarwJM2SsAv0QEqs4sSWJlC0&gid=1993729749'
 RINGS_CSV = 'https://docs.google.com/spreadsheets/u/1/d/1JKkdaeGJPrLhgtZ2jAPBjS8cpaJGL6PgK0SU28fgIJw/export?format=csv&id=1JKkdaeGJPrLhgtZ2jAPBjS8cpaJGL6PgK0SU28fgIJw&gid=0'
 QUADRANTS_CSV = 'https://docs.google.com/spreadsheets/u/1/d/1YDRKVUGHRVREZ1gGUwRGffb7sQpVV3ztR4KTRSqwHds/export?format=csv&id=1YDRKVUGHRVREZ1gGUwRGffb7sQpVV3ztR4KTRSqwHds&gid=0'
 
@@ -25,8 +26,12 @@ temp = requests.get(EXPLANATIONS_CSV)
 text = StringIO(temp.text)
 explanations = pd.read_csv(text)
 
+temp = requests.get(SKILLS_CSV)
+text = StringIO(temp.text)
+skills = pd.read_csv(text)
 
-def findExplanation(explanations, name):
+
+def find_explanation(explanations, name):
     idx = explanations["Name"].str.find(name)
     real_idx = idx[idx == 0].index[0]
     explanation = explanations.iloc[real_idx]['Explanation']
@@ -35,6 +40,18 @@ def findExplanation(explanations, name):
         explanation = "No explanation provided so far."
 
     return explanation
+
+
+def find_skills(skills, name):
+    idx = skills["Name"].str.find(name)
+    real_idx = idx[idx == 0].index[0]
+    skilled_people = skills.iloc[real_idx]['Skilled People']
+
+    if type(skilled_people) == float and math.isnan(skilled_people):
+        skilled_people = "No skilled people in the company so far."
+
+    return skilled_people
+
 
 TARGET_HTML = 'docs/index.html'
 MARKER_START = '/* RADAR START */'
@@ -65,13 +82,17 @@ def main():
             continue
 
         # get the explanations
-        explanation = findExplanation(explanations, row['Name'])
+        explanation = find_explanation(explanations, row['Name'])
+
+        # get the skilled people
+        skilled_people = find_skills(skills, row['Name'])
 
         entries.append({
             'quadrant': quadrant_to_index[row['Quadrant']],
             'ring': ring_to_index[row['Ring']],
             'label': row['Name'],
             'explanation': explanation,
+            'skills': skilled_people,
             'moved': row['Move']
         })
 

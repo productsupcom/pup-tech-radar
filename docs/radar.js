@@ -322,6 +322,7 @@ function radar_visualization(config) {
               .on("click", function(d) {
                 document.getElementById("tech-name").innerHTML = d.label;
                 document.getElementById("explanation").innerHTML = d.explanation;
+                document.getElementById("skills").innerHTML = d.skills;
                 openNav();
               });
         }
@@ -402,6 +403,7 @@ function radar_visualization(config) {
         .on("click", function(d) {
           document.getElementById("tech-name").innerHTML = d.label;
           document.getElementById("explanation").innerHTML = d.explanation;
+          document.getElementById("skills").innerHTML = d.skills;
           openNav();
         });
 
