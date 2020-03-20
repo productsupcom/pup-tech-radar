@@ -26,6 +26,7 @@ temp = requests.get(EXPLANATIONS_CSV)
 text = StringIO(temp.text)
 explanations = pd.read_csv(text)
 
+
 temp = requests.get(SKILLS_CSV)
 text = StringIO(temp.text)
 skills = pd.read_csv(text)
