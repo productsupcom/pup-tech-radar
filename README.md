@@ -1,7 +1,7 @@
 # Motivation
 
-At [Productsup](https://www.productsup.io/), we maintain a [public Tech
-Radar](http://prodcutsup.github.io/tech-radar/) to help our engineering teams
+At [Productsup](https://www.productsup.com/), we maintain a [public Tech
+Radar](http://productsup.github.io/tech-radar/) to help our engineering teams
 align on technology choices. Is is based on the [pioneering work
 by ThoughtWorks](https://www.thoughtworks.com/radar).
 
