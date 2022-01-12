@@ -1,12 +1,7 @@
-import codecs
 import csv
 import json
 import re
-
-import pandas as pd
-from io import StringIO
-import math
-
+import datetime
 import requests
 
 # Publicly available
@@ -15,46 +10,12 @@ QUADRANTS_CSV = 'https://docs.google.com/spreadsheets/u/1/d/1YDRKVUGHRVREZ1gGUwR
 
 # not publicly accessible
 ENTRIES_CSV = 'https://docs.google.com/spreadsheets/u/1/d/119Q4yqwCNO8bS4RSBevRarwJM2SsAv0QEqs4sSWJlC0/export?format=csv&id=119Q4yqwCNO8bS4RSBevRarwJM2SsAv0QEqs4sSWJlC0&gid=0'
-EXPLANATIONS_CSV = 'https://docs.google.com/spreadsheets/u/1/d/119Q4yqwCNO8bS4RSBevRarwJM2SsAv0QEqs4sSWJlC0/export?format=csv&id=119Q4yqwCNO8bS4RSBevRarwJM2SsAv0QEqs4sSWJlC0&gid=479470419'
-SKILLS_CSV = 'https://docs.google.com/spreadsheets/u/1/d/119Q4yqwCNO8bS4RSBevRarwJM2SsAv0QEqs4sSWJlC0/export?format=csv&id=119Q4yqwCNO8bS4RSBevRarwJM2SsAv0QEqs4sSWJlC0&gid=1993729749'
 
 
 def iter_csv(url):
     response = requests.get(url, stream=True)
     response.raise_for_status()
     return csv.DictReader(response.iter_lines(decode_unicode=True))
-
-
-temp = requests.get(EXPLANATIONS_CSV)
-text = StringIO(temp.text)
-explanations = pd.read_csv(text)
-
-
-temp = requests.get(SKILLS_CSV)
-text = StringIO(temp.text)
-skills = pd.read_csv(text)
-
-
-def find_explanation(explanations, name):
-    idx = explanations["Name"].str.find(name)
-    real_idx = idx[idx == 0].index[0]
-    explanation = explanations.iloc[real_idx]['Explanation']
-
-    if type(explanation) == float and math.isnan(explanation):
-        explanation = "No explanation provided so far."
-
-    return explanation
-
-
-def find_skills(skills, name):
-    idx = skills["Name"].str.find(name)
-    real_idx = idx[idx == 0].index[0]
-    skilled_people = skills.iloc[real_idx]['Skilled People']
-
-    if type(skilled_people) == float and math.isnan(skilled_people):
-        skilled_people = "No skilled people in the company so far."
-
-    return skilled_people
 
 
 TARGET_HTML = 'docs/index.html'
@@ -85,21 +46,22 @@ def main():
         if row['Ring'] == 'Remove':
             continue
 
-        # get the explanations
-        explanation = find_explanation(explanations, row['Name'])
-
-        # get the skilled people
-        skilled_people = find_skills(skills, row['Name'])
+        if not row['Link']:
+            confluence_link = 'No Confluence page available. please check out: <a style="font-size:12pt" ' \
+                              'href="https://productsup.atlassian.net/wiki/spaces/EN/pages/1930429957/Overview' \
+                              '+Technologies">Tech Radar Technologies</a>'
+        else:
+            confluence_link = 'Learn more about: <a style="font-size:12pt" href="' + str(row['Link']) + '">' + str(row['Name']) + '</a> in our Documentation.'
 
         entries.append({
             'quadrant': quadrant_to_index[row['Quadrant']],
             'ring': ring_to_index[row['Ring']],
             'label': row['Name'],
-            'explanation': explanation,
-            'skills': skilled_people,
+            'explanation': confluence_link,
             'moved': row['Move']
         })
 
+    dt = datetime.datetime.today()
     radar_config = {
         'svg_id': 'radar',
         'width': 1450,
@@ -109,7 +71,7 @@ def main():
             'grid': "#bbb",
             'inactive': "#ddd"
         },
-        'title': "Productsup Tech Radar — as of 2021.09",
+        'title': "Productsup Tech Radar — as of " + str(dt.month) + "." + str(dt.year),
         'print_layout': True,
         'quadrants': quadrants,
         'rings': rings,
