@@ -9,11 +9,14 @@ import math
 
 import requests
 
+# Publicly available
+RINGS_CSV = 'https://docs.google.com/spreadsheets/u/1/d/1JKkdaeGJPrLhgtZ2jAPBjS8cpaJGL6PgK0SU28fgIJw/export?format=csv&id=1JKkdaeGJPrLhgtZ2jAPBjS8cpaJGL6PgK0SU28fgIJw&gid=0'
+QUADRANTS_CSV = 'https://docs.google.com/spreadsheets/u/1/d/1YDRKVUGHRVREZ1gGUwRGffb7sQpVV3ztR4KTRSqwHds/export?format=csv&id=1YDRKVUGHRVREZ1gGUwRGffb7sQpVV3ztR4KTRSqwHds&gid=0'
+
+# not publicly accessible
 ENTRIES_CSV = 'https://docs.google.com/spreadsheets/u/1/d/119Q4yqwCNO8bS4RSBevRarwJM2SsAv0QEqs4sSWJlC0/export?format=csv&id=119Q4yqwCNO8bS4RSBevRarwJM2SsAv0QEqs4sSWJlC0&gid=0'
 EXPLANATIONS_CSV = 'https://docs.google.com/spreadsheets/u/1/d/119Q4yqwCNO8bS4RSBevRarwJM2SsAv0QEqs4sSWJlC0/export?format=csv&id=119Q4yqwCNO8bS4RSBevRarwJM2SsAv0QEqs4sSWJlC0&gid=479470419'
 SKILLS_CSV = 'https://docs.google.com/spreadsheets/u/1/d/119Q4yqwCNO8bS4RSBevRarwJM2SsAv0QEqs4sSWJlC0/export?format=csv&id=119Q4yqwCNO8bS4RSBevRarwJM2SsAv0QEqs4sSWJlC0&gid=1993729749'
-RINGS_CSV = 'https://docs.google.com/spreadsheets/u/1/d/1JKkdaeGJPrLhgtZ2jAPBjS8cpaJGL6PgK0SU28fgIJw/export?format=csv&id=1JKkdaeGJPrLhgtZ2jAPBjS8cpaJGL6PgK0SU28fgIJw&gid=0'
-QUADRANTS_CSV = 'https://docs.google.com/spreadsheets/u/1/d/1YDRKVUGHRVREZ1gGUwRGffb7sQpVV3ztR4KTRSqwHds/export?format=csv&id=1YDRKVUGHRVREZ1gGUwRGffb7sQpVV3ztR4KTRSqwHds&gid=0'
 
 
 def iter_csv(url):
@@ -106,7 +109,7 @@ def main():
             'grid': "#bbb",
             'inactive': "#ddd"
         },
-        'title': "Productsup Tech Radar — as of 2020.03",
+        'title': "Productsup Tech Radar — as of 2021.09",
         'print_layout': True,
         'quadrants': quadrants,
         'rings': rings,
