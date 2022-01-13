@@ -53,16 +53,16 @@ pipeline {
             }
         }
 
-        stage ('Build and Publish docker image') {
+       /* stage ('Build and Publish docker image') {
             when {
                 buildingTag()
             }
             steps {
-                //script {
+                script {
                     // copy updates files to tech radar server
-                //}
+                }
             }
-        }
+        }*/
     }
 
     // Run post jobs steps
