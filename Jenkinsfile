@@ -58,9 +58,9 @@ pipeline {
                 buildingTag()
             }
             steps {
-                script {
+                //script {
                     // copy updates files to tech radar server
-                }
+                //}
             }
         }
     }
