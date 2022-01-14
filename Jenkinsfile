@@ -85,7 +85,6 @@ pipeline {
         }
         // cleanup always run last and will trigger for both success and failure states
         cleanup {
-            sh "docker-compose down --volumes"
             cleanWs deleteDirs: true
         }
     }
