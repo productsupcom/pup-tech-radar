@@ -53,16 +53,18 @@ pipeline {
             }
         }
 
-       /* stage ('Build and Publish docker image') {
+       stage ('Publish Techradar') {
             when {
                 buildingTag()
             }
             steps {
-                script {
-                    // copy updates files to tech radar server
+
+                sshagent (credentials: ['jenkins-ssh']) {
+                    sh 'scp -o StrictHostKeyChecking=no -r docs/* root@radar.productsup.dev:/home/radar.productsup.dev/public/'
+                    sh 'ssh root@radar.productsup.dev chown -vvv -R www-data.www-data /home/radar.productsup.dev/public/'
                 }
             }
-        }*/
+        }
     }
 
     // Run post jobs steps
