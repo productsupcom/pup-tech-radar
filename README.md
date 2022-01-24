@@ -90,13 +90,13 @@ Radar](http://yoyowallet.github.io/tech-radar/).
 1. install dependencies with yarn (or npm):
 
 ```
-yarn
+docker-compose run --rm cli yarn
 ```
 
 2. start local dev server:
 
 ```
-yarn start
+docker-compose run --rm --service-ports cli yarn start
 ```
 
 3. your default browser should automatically open and show the url
@@ -108,5 +108,5 @@ http://localhost:3000/
 4. update entries from Google Docs:
 
 ```
-yarn generate
+docker-compose run --rm cli yarn generate
 ```

@@ -1,0 +1,17 @@
+# This compose file is used for development on a remote dev environment
+version: "3.8"
+services:
+
+  cli:
+    build:
+      context: ./
+      dockerfile: Dockerfile_CLI
+    container_name: cli
+    #only working with docker composer version 3.8
+    #pull_policy: always
+    ports:
+      - "3000:3000"
+      - "3001:3001"
+    volumes:
+      - ./:/app/
+    working_dir: /app

@@ -14,7 +14,7 @@
     "htmllint": "^0.7.2"
   },
   "scripts": {
-    "generate": "pipenv run python generate.py",
+    "generate": "pipenv install && pipenv run python generate.py",
     "start": "browser-sync docs -w",
     "lint": "npm run lint:js && npm run lint:html",
     "lint:js": "eslint docs/*.js",
