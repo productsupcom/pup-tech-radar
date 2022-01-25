@@ -7,9 +7,7 @@ import requests
 # Publicly available
 RINGS_CSV = 'https://docs.google.com/spreadsheets/u/1/d/1JKkdaeGJPrLhgtZ2jAPBjS8cpaJGL6PgK0SU28fgIJw/export?format=csv&id=1JKkdaeGJPrLhgtZ2jAPBjS8cpaJGL6PgK0SU28fgIJw&gid=0'
 QUADRANTS_CSV = 'https://docs.google.com/spreadsheets/u/1/d/1YDRKVUGHRVREZ1gGUwRGffb7sQpVV3ztR4KTRSqwHds/export?format=csv&id=1YDRKVUGHRVREZ1gGUwRGffb7sQpVV3ztR4KTRSqwHds&gid=0'
-
-# not publicly accessible
-ENTRIES_CSV = 'https://docs.google.com/spreadsheets/u/1/d/119Q4yqwCNO8bS4RSBevRarwJM2SsAv0QEqs4sSWJlC0/export?format=csv&id=119Q4yqwCNO8bS4RSBevRarwJM2SsAv0QEqs4sSWJlC0&gid=0'
+ENTRIES_CSV = 'https://docs.google.com/spreadsheets/u/1/d/1Op2gILhJWK1YldR60xWBYMKxajSkHsy25DL_7y14HpU/export?format=csv&id=1Op2gILhJWK1YldR60xWBYMKxajSkHsy25DL_7y14HpU&gid=0'
 
 
 def iter_csv(url):
@@ -47,11 +45,11 @@ def main():
             continue
 
         if not row['Link']:
-            confluence_link = 'No Confluence page available. please check out: <a style="font-size:12pt" ' \
+            confluence_link = 'No Confluence page available. please check out: <a target="_blank" style="font-size:12pt" ' \
                               'href="https://productsup.atlassian.net/wiki/spaces/EN/pages/1930429957/Overview' \
                               '+Technologies">Tech Radar Technologies</a>'
         else:
-            confluence_link = 'Learn more about: <a style="font-size:12pt" href="' + str(row['Link']) + '">' + str(row['Name']) + '</a> in our Documentation.'
+            confluence_link = 'Learn more about: <a target="_blank" style="font-size:12pt" href="' + str(row['Link']) + '">' + str(row['Name']) + '</a> in our Documentation.'
 
         entries.append({
             'quadrant': quadrant_to_index[row['Quadrant']],
@@ -71,7 +69,7 @@ def main():
             'grid': "#bbb",
             'inactive': "#ddd"
         },
-        'title': "Productsup Tech Radar — as of " + str(dt.month) + "." + str(dt.year),
+        'title': "Productsup Tech Radar — as of " + str(dt.strftime("%Y.%m")),
         'print_layout': True,
         'quadrants': quadrants,
         'rings': rings,

@@ -1,0 +1,5 @@
+FROM node:17
+
+RUN apt-get update && \
+    apt-get -y install pipenv python3 && \
+    apt-get clean

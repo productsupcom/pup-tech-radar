@@ -12,6 +12,19 @@ This repository contains the code to generate the visualization:
 was forked from work originally done by [Zalando](https://github.com/zalando/tech-radar).
 Feel free to use and adapt it for your own purposes.
 
+## How do I create a new version of the Techradar
+
+1. Adjust or add technologies in our [Google Sheet](https://docs.google.com/spreadsheets/d/1Op2gILhJWK1YldR60xWBYMKxajSkHsy25DL_7y14HpU/edit?id=1Op2gILhJWK1YldR60xWBYMKxajSkHsy25DL_7y14HpU#gid=0) <br/>
+**FYI:** Only the [Techradar board members](https://productsup.atlassian.net/wiki/spaces/EN/pages/1815380194/Tech+Radar#Who-is-part-of-the-Tech-Radar-board?) have write access to this sheet.
+2. Create a new branch and a PR
+3. Generate a new version by executing `yarn generate` on the root of this project
+4. Commit the changed files
+5. Follow the review process in the PR template
+6. Merge the PR
+7. Create a new release in GitHub
+
+**That's it!!**
+
 ## Usage
 
 1. include `d3.js` and `radar.js`:
@@ -77,13 +90,13 @@ Radar](http://yoyowallet.github.io/tech-radar/).
 1. install dependencies with yarn (or npm):
 
 ```
-yarn
+docker-compose run --rm cli yarn
 ```
 
 2. start local dev server:
 
 ```
-yarn start
+docker-compose run --rm --service-ports cli yarn start
 ```
 
 3. your default browser should automatically open and show the url
@@ -95,5 +108,5 @@ http://localhost:3000/
 4. update entries from Google Docs:
 
 ```
-yarn generate
+docker-compose run --rm cli yarn generate
 ```
