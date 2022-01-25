@@ -69,7 +69,7 @@ def main():
             'grid': "#bbb",
             'inactive': "#ddd"
         },
-        'title': "Productsup Tech Radar — as of " + str(dt.month) + "." + str(dt.year),
+        'title': "Productsup Tech Radar — as of " + str(dt.strftime("%Y.%m")),
         'print_layout': True,
         'quadrants': quadrants,
         'rings': rings,
