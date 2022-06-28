@@ -76,13 +76,19 @@ def main():
         'entries': entries,
     }
 
+    with open("JsonPrettyPrint.json", "w") as write_file:
+        json.dump(radar_config, write_file, indent=4, separators=(", ", ": "), sort_keys=True)
+
+    with open("JsonPrettyPrint.json", 'r') as f:
+            radar_json_string = f.read()
+
     with open(TARGET_HTML, 'r') as f:
         html = f.read()
 
     html = re.sub(
         f'({re.escape(MARKER_START)}).*({re.escape(MARKER_END)})',
-        r'\1' + json.dumps(radar_config).replace('\\', r'\\') + r'\2',
-        html,
+        r'\1' + radar_json_string.replace('\\', r'\\') + r'\2',
+        html, flags=re.S
     )
 
     with open(TARGET_HTML, 'w') as f:
