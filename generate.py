@@ -88,7 +88,7 @@ def main():
     html = re.sub(
         f'({re.escape(MARKER_START)}).*({re.escape(MARKER_END)})',
         r'\1' + radar_json_string.replace('\\', r'\\') + r'\2',
-        html,
+        html, flags=re.S
     )
 
     with open(TARGET_HTML, 'w') as f:
