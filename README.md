@@ -17,11 +17,12 @@ Feel free to use and adapt it for your own purposes.
 1. Adjust or add technologies in our [Google Sheet](https://docs.google.com/spreadsheets/d/1Op2gILhJWK1YldR60xWBYMKxajSkHsy25DL_7y14HpU/edit?id=1Op2gILhJWK1YldR60xWBYMKxajSkHsy25DL_7y14HpU#gid=0) <br/>
 **FYI:** Only the [Techradar board members](https://productsup.atlassian.net/wiki/spaces/EN/pages/1815380194/Tech+Radar#Who-is-part-of-the-Tech-Radar-board?) have write access to this sheet.
 2. Create a new branch and a PR
-3. Generate a new version by executing `docker-compose run --rm cli yarn generate` on the root of this project
-4. Commit the changed files
-5. Follow the review process in the PR template
-6. Merge the PR
-7. Create a new release in GitHub
+3. Install dependencies with yarn (or npm) `docker-compose run --rm cli yarn`
+4. Generate a new version by executing `docker-compose run --rm cli yarn generate` on the root of this project
+5. Commit the changed files
+6. Follow the review process in the PR template
+7. Merge the PR
+8. Create a new release in GitHub
 
 **That's it!!**
 
