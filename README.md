@@ -1,8 +1,8 @@
 # Motivation
 
-At [Productsup](https://www.productsup.com/), we maintain a [public Tech
-Radar](http://productsup.github.io/tech-radar/) to help our engineering teams
-align on technology choices. Is is based on the [pioneering work
+At [Productsup](https://www.productsup.com/), we maintain a [Tech
+Radar](https://radar.productsup.dev/) to help our engineering teams
+align on technology choices. It is based on the [pioneering work
 by ThoughtWorks](https://www.thoughtworks.com/radar).
 
 This version is a modified version from [Yoyo Wallet](https://github.com/yoyowallet/tech-radar).
