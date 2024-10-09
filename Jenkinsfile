@@ -54,14 +54,14 @@ pipeline {
         }
 
        stage ('Publish Techradar') {
-            when {
-                buildingTag()
-            }
+            //when {
+            //    buildingTag()
+            //}
             steps {
 
                 sshagent (credentials: ['jenkins-ssh']) {
-                    sh 'scp -o StrictHostKeyChecking=no -r docs/* root@radar.productsup.dev:/home/radar.productsup.dev/public/'
-                    sh 'ssh root@radar.productsup.dev chown -vvv -R www-data.www-data /home/radar.productsup.dev/public/'
+                    sh 'scp -o StrictHostKeyChecking=no -r docs/* root@radar-r2-1.productsup.int:/home/radar.productsup.dev/public/'
+                    sh 'ssh root@radar-r2-1.productsup.int chown -vvv -R www-data.www-data /home/radar.productsup.dev/public/'
                 }
             }
         }
