@@ -54,9 +54,9 @@ pipeline {
         }
 
        stage ('Publish Techradar') {
-            when {
-                buildingTag()
-            }
+            //when {
+            //    buildingTag()
+            //}
             steps {
 
                 sshagent (credentials: ['jenkins-ssh']) {
